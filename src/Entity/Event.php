@@ -18,12 +18,7 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $time;
 
@@ -32,24 +27,12 @@ class Event
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(?\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getTime(): ?\DateTimeInterface
+    public function getTime(): ?string
     {
         return $this->time;
     }
 
-    public function setTime(?\DateTimeInterface $time): self
+    public function setTime(?string $time): self
     {
         $this->time = $time;
 
