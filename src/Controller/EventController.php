@@ -33,6 +33,4 @@ class EventController extends AbstractController
 
         return new Response($jsonEvent);
     }
-
-
 }
