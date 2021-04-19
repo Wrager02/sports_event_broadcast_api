@@ -25,7 +25,7 @@ class Team
     private $name;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", length=2550, nullable=true)
      */
     private $logo;
 
