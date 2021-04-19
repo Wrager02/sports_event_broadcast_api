@@ -29,19 +29,19 @@ class Team
      */
     private $logo;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="team")
-     */
-    private $members;
+//    /**
+//     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="team")
+//     */
+//    private $members;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="team1")
-     */
-    private $events;
+//    /**
+//     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="team1")
+//     */
+//    private $events;
 
     public function __construct()
     {
-        $this->members = new ArrayCollection();
+//        $this->members = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
 
@@ -74,60 +74,60 @@ class Team
         return $this;
     }
 
-    /**
-     * @return Collection|Member[]
-     */
-    public function getMembers(): Collection
-    {
-        return $this->members;
-    }
+//    /**
+//     * @return Collection|Member[]
+//     */
+//    public function getMembers(): Collection
+//    {
+//        return $this->members;
+//    }
 
-    public function addMember(Member $member): self
-    {
-        if (!$this->members->contains($member)) {
-            $this->members[] = $member;
-            $member->setTeam($this);
-        }
+//    public function addMember(Member $member): self
+//    {
+//        if (!$this->members->contains($member)) {
+//            $this->members[] = $member;
+//            $member->setTeam($this);
+//        }
+//
+//        return $this;
+//    }
 
-        return $this;
-    }
+//    public function removeMember(Member $member): self
+//    {
+//        if ($this->members->removeElement($member)) {
+//            // set the owning side to null (unless already changed)
+//            if ($member->getTeam() === $this) {
+//                $member->setTeam(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
-    public function removeMember(Member $member): self
-    {
-        if ($this->members->removeElement($member)) {
-            // set the owning side to null (unless already changed)
-            if ($member->getTeam() === $this) {
-                $member->setTeam(null);
-            }
-        }
+//    /**
+//     * @return Collection|Event[]
+//     */
+//    public function getEvents(): Collection
+//    {
+//        return $this->events;
+//    }
 
-        return $this;
-    }
+//    public function addEvent(Event $event): self
+//    {
+//        if (!$this->events->contains($event)) {
+//            $this->events[] = $event;
+//            $event->addTeam1($this);
+//        }
+//
+//        return $this;
+//    }
 
-    /**
-     * @return Collection|Event[]
-     */
-    public function getEvents(): Collection
-    {
-        return $this->events;
-    }
-
-    public function addEvent(Event $event): self
-    {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-            $event->addTeam1($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Event $event): self
-    {
-        if ($this->events->removeElement($event)) {
-            $event->removeTeam1($this);
-        }
-
-        return $this;
-    }
+//    public function removeEvent(Event $event): self
+//    {
+//        if ($this->events->removeElement($event)) {
+//            $event->removeTeam1($this);
+//        }
+//
+//        return $this;
+//    }
 }

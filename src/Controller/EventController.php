@@ -33,4 +33,28 @@ class EventController extends AbstractController
 
         return new Response($jsonEvent);
     }
+
+    /**
+     * @Route("/api/events", methods={"GET"})
+     * @param SerializerInterface $serializer
+     * @return Response
+     */
+    public function getEvents(SerializerInterface $serializer): Response
+    {
+        $events = $this->getDoctrine()
+            ->getRepository(Event::class)
+            ->findBy(
+                array()
+            );
+
+        if (!$events) {
+            throw $this->createNotFoundException(
+                'No events found.'
+            );
+        }
+
+        $jsonEvents = $serializer->serialize($events, 'json');
+
+        return new Response($jsonEvents);
+    }
 }

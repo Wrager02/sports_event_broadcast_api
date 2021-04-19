@@ -26,13 +26,20 @@ class Event
 
     /**
      * @ORM\ManyToMany(targetEntity=Team::class, inversedBy="events")
+     * @ORM\JoinTable(name="event_team_1")
      */
     private $team1;
 
     /**
      * @ORM\ManyToMany(targetEntity=Team::class, inversedBy="events")
+     * @ORM\JoinTable(name="event_team_2")
      */
     private $team2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $game;
 
     public function __construct()
     {
@@ -101,6 +108,18 @@ class Event
     public function removeTeam2(Team $team2): self
     {
         $this->team2->removeElement($team2);
+
+        return $this;
+    }
+
+    public function getGame(): ?string
+    {
+        return $this->game;
+    }
+
+    public function setGame(string $game): self
+    {
+        $this->game = $game;
 
         return $this;
     }
