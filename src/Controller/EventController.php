@@ -55,6 +55,9 @@ class EventController extends AbstractController
 
         $jsonEvents = $serializer->serialize($events, 'json');
 
-        return new Response($jsonEvents);
+        $response = new Response($jsonEvents);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
     }
 }
